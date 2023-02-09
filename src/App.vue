@@ -1,14 +1,12 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import HomeView from './views/HomeView.vue';
+import SearchPage from './views/SearchPage.vue';
 
 </script>
 
 <template>
     <div class="home">
-      <h1>PokeDash</h1>
-      <h2>This is my PokeDash app</h2>
-      <HomeView />
+      <SearchPage />
     </div>
 </template>
 
