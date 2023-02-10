@@ -7,8 +7,7 @@ export default {
     return {
       pokemonName: '',
       pokemon: null,
-      pokemonError: null,
-      evolutionError: null,
+      error: null,
       evolutions: null,
       evChain: null
     }
@@ -27,7 +26,7 @@ export default {
             console.log(response.status)
             getEvolution(especieUrl)
           } else {
-            this.pokemonError = 'Pokemon Not Found'
+            this.error = 'Pokemon Not Found'
           }
         })
     .catch(error => {
@@ -45,7 +44,7 @@ export default {
             this.evolutions = speciesNames;
             console.log(`é daqui ${speciesNames}`);
           } else {
-            this.evolutionError = 'Evolution Not Found'
+            this.error = 'Pokemon Not Found'
           }
         })
         .catch(error => {
@@ -55,22 +54,20 @@ export default {
     }
 
     function getSpeciesNames(chain) {
-      console.log("entrei na função")
-
       let species = [];
-      species = [chain.species.name];
-
-      console.log(`peguei o nome fora do if ${chain.species.name}`)
-      console.log(`specie: ${species}`)
-      
-      for (let i = 0; i < chain.evolves_to.length; i++) {
-        species = species.concat(getSpeciesNames(chain.evolves_to[i]));
-        console.log(`peguei o name no for: ${species}`)
+      if (chain) {
+      for (let i = 0; i < chain.length; i++) {
+      species.push(chain[i].species.name);
+      console.log(`entrou aqui ${species}`)
+      if (chain[i].evolves_to.length > 0) {
+      species = species.concat(getSpeciesNames(chain[i].evolves_to));
+      console.log(species)
+      }
+      }
       }
 
-      console.log(`specie final: ${typeof species}`)
       return species;
-    }
+      }
 
   },
   },
@@ -90,6 +87,8 @@ export default {
       peso: {{ pokemon.height }} | 
       base: {{ pokemon.base_experience }}
 
+      {{ evChain }}
+
       <p v-if="evolutions">
         Evolution Chain: 
         <ul>
@@ -100,10 +99,8 @@ export default {
       </p>
 
     </div>
-    <p v-else-if="pokemonError">
-      {{ pokemonError }}
-      {{ evolutionError }}
+    <p v-else-if="error">
+      {{ error }}
     </p>
   </div>
 </template>
-

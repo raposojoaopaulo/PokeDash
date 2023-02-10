@@ -12,7 +12,6 @@ import SearchPage from './views/SearchPage.vue';
 
 <style lang="scss" scoped>
 .home{
-  background-color: $red;
   h1{
     color: $blue;
   }
