@@ -7,10 +7,9 @@ export default {
     return {
       pokemonName: '',
       pokemon: null,
-      pokemonError: null,
-      evolutionError: null,
+      error: null,
       evolutions: null,
-      evChain: null
+      
     }
   },
   methods: {
@@ -27,7 +26,7 @@ export default {
             console.log(response.status)
             getEvolution(especieUrl)
           } else {
-            this.pokemonError = 'Pokemon Not Found'
+            this.error = 'Pokemon Not Found'
           }
         })
     .catch(error => {
@@ -39,13 +38,12 @@ export default {
       getEvolutionChain(evolutionChainUrl)
         .then(response => {
           if (response.status === 200) {
-            const evolutionChain = response.data.chain;
-            this.evChain = response.data.chain;
+            const evolutionChain = response.data.chain
             const speciesNames = getSpeciesNames(evolutionChain);
             this.evolutions = speciesNames;
             console.log(`é daqui ${speciesNames}`);
           } else {
-            this.evolutionError = 'Evolution Not Found'
+            this.error = 'Pokemon Not Found'
           }
         })
         .catch(error => {
@@ -55,23 +53,20 @@ export default {
     }
 
     function getSpeciesNames(chain) {
-      console.log("entrei na função")
-
       let species = [];
-      species = [chain.species.name];
-
-      console.log(`peguei o nome fora do if ${chain.species.name}`)
-      console.log(`specie: ${species}`)
-      
-      for (let i = 0; i < chain.evolves_to.length; i++) {
-        species = species.concat(getSpeciesNames(chain.evolves_to[i]));
-        console.log(`peguei o name no for: ${species}`)
+      for (let i = 0; i < chain.length; i++) {
+        species.push(chain[i].species.name);
+        if (chain[i].evolves_to.length > 0) {
+          species = species.concat(getSpeciesNames(chain[i].evolves_to));
+        }
       }
 
-      console.log(`specie final: ${typeof species}`)
+      if (chain.length === 0) {
+        species.push(chain.species.name);
+      }
+
       return species;
     }
-
   },
   },
 }
@@ -100,10 +95,8 @@ export default {
       </p>
 
     </div>
-    <p v-else-if="pokemonError">
-      {{ pokemonError }}
-      {{ evolutionError }}
+    <p v-else-if="error">
+      {{ error }}
     </p>
   </div>
 </template>
-
