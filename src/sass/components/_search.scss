@@ -9,21 +9,20 @@
         font-size: 1.6rem;
         border: 1px solid $color-grey-light;
         outline: none;
+        margin: 1rem;
+        height: 5rem;
 
     }
 
-    & input[type="text"] {
-        width: 80%;
-        border-top-left-radius: 50px 50px;
-        border-bottom-left-radius: 50px 50px;
+    & input {
+        width: 70%;
+        border-radius: 50px;
         border-left: 0;
     }
 
-    & button[type="submit"] {
+    & button{
         width: 10%;
-        border-top-right-radius: 50px 50px;
-        border-bottom-right-radius: 50px 50px;
-        border-right: 0;
+        border-radius: 50px;
         background-color: $color-tertiary;
         color: $color-primary-dark;
         cursor: pointer;
@@ -32,8 +31,8 @@
         text-overflow: ellipsis;
 
         &:hover {
-            background-color: $color-secondary;
-            color: $color-white;
+            background-color: $color-primary-dark;
+            color: $color-tertiary;
             transition: 0.3s ease-in-out;
         }
     }
@@ -43,11 +42,11 @@
     .search__form {
         padding: 1rem;
     
-        & input[type="text"] {
+        & input {
             width: 80%;
         }
     
-        & button[type="submit"] {
+        & button {
             width: 20%;
         }
     }

@@ -1,10 +1,22 @@
 <script>
-  // export default {
-  //   props: {
-  //     pokemonName: String,
-  //     spriteAddress: String
-  //   }
-  // }
+
+// import { usePokemonStore } from '@/stores/pokemon';
+// const { evolutionChain, getEvolutionChainNames } = usePokemonStore();
+
+const evolutions = [];
+
+  export default {
+    
+    props: {
+      evolutionChain: Object,
+    },
+
+    methods: {      
+
+      // evolutions: getEvolutionChainNames(evolutionChain),
+
+    },
+  }
 </script>
 
 <template>
@@ -13,6 +25,10 @@
       <img :src="spriteAddress" :alt="pokemonName" />
     </div> -->
     <h2>Evoluitons</h2>
+
+    <p v-if="evolutionChain">
+      {{ evolutionChain }}
+    </p>
   </div>
 </template>
 

@@ -7,13 +7,21 @@ import EvolutionCard from '../components/EvolutionCard.vue'
 const { currentPokemon, loading, error, evolutionChain, speciesUrl } = storeToRefs(usePokemonStore());
 const { searchPokemon, getEvolution } = usePokemonStore();
 
-var pokemonName;
+let pokemonName = '';
+const evolutions = [];
 
 const search = () => {
-  searchPokemon(pokemonName);
-  getEvolution(speciesUrl);
-}
-
+  searchPokemon(pokemonName)
+    .then(() => {
+      console.log("to aqui?", speciesUrl)
+      getEvolution();
+      pokemonName = ''
+      console.log("veio evolution?", evolutionChain)
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 </script>
 
 <template>
@@ -28,8 +36,7 @@ const search = () => {
     error
   </div>
   <div v-if="currentPokemon">
-    {{ evolutionChain }}
     <PokemonCard :pokemonName="currentPokemon.name" :spriteAddress="currentPokemon.sprites.front_default" />
-    <EvolutionCard />
+    <EvolutionCard :evolutionChain="evolutionChain"/>
   </div>
 </template>
