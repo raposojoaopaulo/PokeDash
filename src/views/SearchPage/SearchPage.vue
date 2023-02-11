@@ -1,6 +1,5 @@
 <script>
 import { getPokemon, getEvolutionChain } from '@/providers/api.js'
-import axios from 'axios'
 
 export default {
   data () {
@@ -78,12 +77,17 @@ export default {
 </script>
 
 <template>
-  <div>
+  <div class="poke-logo">
+    <img src="public/logo/Pokedash.png" alt="logo" />
+  </div>
+  <div class="center-on-page">
     <form @submit.prevent="searchPokemon">
-      <input type="text" v-model="pokemonName" placeholder="Search pokemon" />
-      <button type="submit">Search</button>
+      <input required="" type="text" v-model="pokemonName" name="text" autocomplete="off" class="input" placeholder="Insert a pokemon name" />
+      <button type="submit">
+          Search
+      </button>
     </form>
-    
+
     <div v-if="pokemon">
       <h3>nome: {{ pokemon.name }}</h3>
       id: {{ pokemon.id }} | 
@@ -107,3 +111,4 @@ export default {
   </div>
 </template>
 
+<style src="./style.scss" lang="scss" scoped />

@@ -1,0 +1,13 @@
+@import '@/scss/app.scss';
+
+.home {
+  height: 100vh;
+  width: 100%;
+  background-color: $pokeBlue;
+
+  position: relative;
+
+  @media only screen and (max-width: 767px) {
+    height: 100%;
+  }
+}

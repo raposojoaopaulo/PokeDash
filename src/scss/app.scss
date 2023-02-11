@@ -1,4 +1,23 @@
-$blue: #3d5598;
-$red: #e83e35;
-$yellow: #efbe03;
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: #3d5598;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+}
+
+
+@import './variables'
+
 

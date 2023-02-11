@@ -1,6 +1,6 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import SearchPage from './views/SearchPage.vue';
+import SearchPage from './views/SearchPage/SearchPage.vue';
 
 </script>
 
@@ -10,13 +10,4 @@ import SearchPage from './views/SearchPage.vue';
     </div>
 </template>
 
-<style lang="scss" scoped>
-.home{
-  h1{
-    color: $blue;
-  }
-  h2{
-    color: $yellow;
-  }
-}
-</style>
+<style src="./AppStyle.scss" lang="scss" scoped />
