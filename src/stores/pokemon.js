@@ -68,26 +68,4 @@ export const usePokemonStore = defineStore({
     },
   },
 
-  setup () {
-
-    function getEvolutionChainNames(chain) {
-      console.log("entrei na função")
-          let species = [];
-          species = [chain.species.name];
-          console.log(`peguei o nome fora do if ${chain.species.name}`)
-          console.log(`specie: ${species}`)
-          
-          for (let i = 0; i < chain.evolves_to.length; i++) {
-            species = species.concat(getSpeciesNames(chain.evolves_to[i]));
-            console.log(`peguei o name no for: ${species}`)
-          }
-          console.log(`specie final: ${typeof species}`)
-          return species;
-      };
-    return {
-      getEvolutionChainNames,
-    }
-
-  },
-
 });

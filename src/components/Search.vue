@@ -5,10 +5,10 @@ import PokemonCard from '../components/PokemonCard.vue'
 import EvolutionCard from '../components/EvolutionCard.vue'
 
 const { currentPokemon, loading, error, evolutionChain, speciesUrl } = storeToRefs(usePokemonStore());
-const { searchPokemon, getEvolution } = usePokemonStore();
+const { searchPokemon, getEvolution,  } = usePokemonStore();
 
 let pokemonName = '';
-const evolutions = [];
+const evolutions = null;
 
 const search = () => {
   searchPokemon(pokemonName)
@@ -16,12 +16,31 @@ const search = () => {
       console.log("to aqui?", speciesUrl)
       getEvolution();
       pokemonName = ''
-      console.log("veio evolution?", evolutionChain)
+      console.log("veio evolution?", evolutionChain.chain)
+      evolutions = getEvolutionChainNames(evolutionChain.value);
     })
     .catch((err) => {
       console.log(err);
-    });
+    });    
 };
+
+function getEvolutionChainNames(evolutions) {
+  console.log("entrei na função")
+  console.log("to recebendo?", evolutions)
+      let species = [];
+      species = [evolutions.species.name];
+      console.log(`peguei o nome fora do if ${evolutions.species.name}`)
+      console.log(`specie: ${species}`)
+      
+      for (let i = 0; i < evolutions.evolves_to.length; i++) {
+        species = species.concat(getSpeciesNames(evolutions.evolves_to[i]));
+        console.log(`peguei o name no for: ${species}`)
+      }
+      console.log(`specie final: ${typeof species}`)
+      return species;
+  };
+
+
 </script>
 
 <template>
