@@ -1,22 +1,9 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import SearchPage from './views/SearchPage.vue';
-
+import { RouterView } from 'vue-router'
 </script>
 
 <template>
-    <div class="home">
-      <SearchPage />
-    </div>
+  <div class="container">
+    <RouterView />
+  </div>
 </template>
-
-<style lang="scss" scoped>
-.home{
-  h1{
-    color: $blue;
-  }
-  h2{
-    color: $yellow;
-  }
-}
-</style>

@@ -1,0 +1,21 @@
+.home {
+    margin-top: 10rem;
+    padding: 5rem;
+    border-radius: 3px;
+    text-align: center;
+
+    &__logo img {
+        max-width: 50%;
+        margin-bottom: 10rem;
+    }
+}
+
+@media (max-width:600px)  {
+    .home {
+        padding: 1rem;
+
+        &__logo img {
+            margin-bottom: 5rem;
+        }
+    } 
+}
