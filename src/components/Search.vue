@@ -7,12 +7,23 @@ import EvolutionCard from '../components/EvolutionCard.vue'
 const { currentPokemon, loading, error, evolutionChain, speciesUrl } = storeToRefs(usePokemonStore());
 const { searchPokemon, getEvolution } = usePokemonStore();
 
-var pokemonName;
+let pokemonName = '';
 
 const search = () => {
-  searchPokemon(pokemonName);
-  getEvolution(speciesUrl);
+  searchPokemon(pokemonName)
+    .then(() => {
+      console.log("to aqui?", speciesUrl)
+      getEvolution();
+      pokemonName = ''
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }
+
+// console.log("to aqui?", speciesUrl)
+//   getEvolution();
+//   pokemonName = ''
 
 </script>
 
