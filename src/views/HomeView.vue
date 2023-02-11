@@ -6,7 +6,7 @@ import PokemonCard from '../components/PokemonCard.vue'
 <template>
   <main class="home">
     <div class="home__logo">
-      <img src="public/logo/Pokedash.png" alt="pokedash" />
+      <img src="https://i.imgur.com/QG5gElr.png" alt="pokedash" />
     </div>
     <Search />
   </main>
