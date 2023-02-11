@@ -8,6 +8,7 @@ const { currentPokemon, loading, error, evolutionChain, speciesUrl } = storeToRe
 const { searchPokemon, getEvolution } = usePokemonStore();
 
 let pokemonName = '';
+const evolutions = [];
 
 const search = () => {
   searchPokemon(pokemonName)
@@ -15,16 +16,12 @@ const search = () => {
       console.log("to aqui?", speciesUrl)
       getEvolution();
       pokemonName = ''
+      console.log("veio evolution?", evolutionChain)
     })
     .catch((err) => {
       console.log(err);
     });
-}
-
-// console.log("to aqui?", speciesUrl)
-//   getEvolution();
-//   pokemonName = ''
-
+};
 </script>
 
 <template>
@@ -39,8 +36,7 @@ const search = () => {
     error
   </div>
   <div v-if="currentPokemon">
-    {{ evolutionChain }}
     <PokemonCard :pokemonName="currentPokemon.name" :spriteAddress="currentPokemon.sprites.front_default" />
-    <EvolutionCard />
+    <EvolutionCard :evolutionChain="evolutionChain"/>
   </div>
 </template>
