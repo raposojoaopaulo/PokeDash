@@ -8,7 +8,10 @@ export const usePokemonStore = defineStore({
     speciesUrl: null,
     loading: false,
     error: null,
+    evolutionUrl: null,
     evolutionChain: null,
+    speciesNames: null,
+    pokemonName: '',
   }),
   getters: {
 
@@ -26,46 +29,49 @@ export const usePokemonStore = defineStore({
           console.log(`aqui tem url ${this.speciesUrl}`)
           return json;
         })
+        this.evolutionUrl = await fetch(this.speciesUrl)
+        .then((response) => response.json())
+        .then((data) => {
+          const evolutionChainUrl = data.evolution_chain.url
+          console.log("chainUrl?", evolutionChainUrl)
+          return evolutionChainUrl;
+        })
+        this.evolutionChain = await fetch(this.evolutionUrl)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("evo?", data.chain)
+          
+          return data;
+        })
+        this.speciesNames = this.getSpeciesNames(this.evolutionChain.chain);
       } catch(error) {
+        console.log("esse é o erro:", error);
         this.currentPokemon = null;
         this.error = error;
       } finally {
         this.loading = false;
       }
-    },
+    },  
 
 
-    async getEvolution() {
-      console.log("entrei aqui")
-      try {
-        this.error = null;
-        console.log("entrei try?", this.currentPokemon.species.url)
-        const speciesResponse = await fetch(this.currentPokemon.species.url)
-        console.log("especie", speciesResponse.url)
-        const resp = await fetch(speciesResponse.url)
-        .then((response) => response.json())
-              .then((data) => { 
-                const evolutionChainUrl = data.evolution_chain.url
-                console.log("url?", evolutionChainUrl)
-
-                const evolutionResponse = fetch(evolutionChainUrl)
-                .then((response) => response.json())
-                .then((data) => {
-                  this.evolutionChain = data
-                  console.log("evo?", this.evolutionChain)
-                  return data;
-                }
-                )
-                return evolutionResponse;
-
-              })    
-
-        return speciesResponse;
-
-      } catch (error) {
-        return error;
+    getSpeciesNames(chain) {
+      console.log("entrei na função")
+      let species = [];
+      species = [chain.species.name];
+      console.log(`peguei o nome fora do if ${chain.species.name}`)
+      console.log(`specie: ${species}`)
+      
+      for (let i = 0; i < chain.evolves_to.length; i++) {
+        species = species.concat(this.getSpeciesNames(chain.evolves_to[i]));
+        console.log(`peguei o name no for: ${species}`)
       }
+      console.log(`specie final: ${typeof species}`)
+      console.log(`specie final: ${species}`)
+      return species;
     },
+    
+
+
   },
 
 });
