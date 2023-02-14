@@ -15,12 +15,8 @@
       <img :src="spriteAddress" :alt="pokemonName" />
     </div> -->
     <h2 v-if="evolutionChain">Evoluitons</h2>
-      <p>
-        <ul>
-          <li v-for="name in evolutionChain">
-            <h3>{{ name }}</h3>
-          </li>
-        </ul>
+      <p v-for="name in evolutionChain">
+        <h3>{{ name }}</h3>
       </p>
 
   </div>

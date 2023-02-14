@@ -1,32 +1,97 @@
+// .pokemoncard {
+//     margin: 0 auto;
+//     margin-top: 2rem;
+//     width: 90rem;
+//     height: 26rem;
+//     background: $color-white;
+//     border-radius: 10px;
+//     box-shadow: 6px 6px 12px #334780,
+//     -6px -6px 12px #425DA6;
+//     display: flex;
+//     align-items: center;
+
+//     &:hover {
+//         transform: scale(1.1);
+//         transition: 0.3s ease-in-out;
+//     }
+
+//     & img {
+//         height: 25rem;
+//         border-right: 4px solid $color-grey;
+//     }
+
+//     & h2 {
+//         font-family: Verdana, Geneva, Tahoma, sans-serif;
+//         margin-top: 1em;
+//     }    
+
+
+//     &__info {
+//         flex: 1;
+//         font-family: Verdana, Geneva, Tahoma, sans-serif;
+//         font-size: 1.5rem;
+//         margin-top: 1em;
+//     }
+
+// }
+
+// @media (max-width:650px)  {
+//     .pokemoncard {
+//         padding: 1rem;
+//     }
+// }
+
 .pokemoncard {
     margin: 0 auto;
     margin-top: 2rem;
-    width: 190px;
-    height: 254px;
+    width: 90rem;
+    height: 26rem;
     background: $color-white;
     border-radius: 10px;
-    box-shadow: 6px 6px 12px #334780,
-    -6px -6px 12px #425DA6;
-
+    box-shadow: 6px 6px 12px #334780, -6px -6px 12px #425DA6;
+    display: flex;
+    align-items: center;
+  
     &:hover {
-        transform: scale(1.1);
-        transition: 0.3s ease-in-out;
+      transform: scale(1.1);
+      transition: 0.3s ease-in-out;
     }
-
+  
     & img {
-        height: 180px;
-        border-bottom: 4px solid $color-grey;
+      height: 25rem;
+      border-right: 4px solid $color-grey;
     }
-
-    & h2 {
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
+  
+    &__info {
+      flex: 1;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-size: 1.5rem;
+      margin-top: 1em;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+  
+      & h2 {
+        text-align: center;
+        flex-basis: 100%;
+      }
+  
+      &__types,
+      &__stats {
+        flex-basis: 45%;
         margin-top: 1em;
-    }    
-
-}
-
-@media (max-width:650px)  {
-    .pokemoncard {
-        padding: 1rem;
+  
+        & p {
+          margin: 0;
+        }
+      }
     }
-}
+  }
+  
+  @media (max-width: 650px) {
+    .pokemoncard {
+      padding: 1rem;
+    }
+  }
+  

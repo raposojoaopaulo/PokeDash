@@ -14,8 +14,7 @@ const search = async () => {
   await searchPokemon(pokemonName.toLowerCase())
     .then(() => {
       console.log("isso é o que eu to recebendo na evolutionChain", evolutionChain.value)
-      console.log("o que vem dos speciesNames", speciesNames.value)
-      
+      console.log("o que vem dos speciesNames", speciesNames.value)       
     })
     .catch((err) => {
       console.log(err);
@@ -37,7 +36,8 @@ const search = async () => {
     error
   </div>
   <div v-if="currentPokemon">
-    <PokemonCard :pokemonName="currentPokemon.name" :spriteAddress="currentPokemon.sprites.front_default" />
+    <!-- <PokemonCard :pokemonName="currentPokemon.name" :spriteAddress="currentPokemon.sprites.front_default" /> -->
+    <PokemonCard :pokemon="currentPokemon"/>
     <EvolutionCard :evolutionChain="speciesNames"/>
   </div>
 </template>
