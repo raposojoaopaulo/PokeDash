@@ -1,83 +1,18 @@
-// .evolutioncard {
-//   margin: 0 auto;
-//   margin-top: 10rem;
-//   width: 90rem;
-//   height: 20rem;
-//   background: $color-white;
-//   border-radius: 1rem;
-//   box-shadow: 6px 6px 12px #425DA6 .8,
-//   -6px -6px 12px #425DA6;
-
-//   &:hover {
-//       transform: scale(1.1);
-//       transition: 0.3s ease-in-out;
-//   }
-
-//   & img {
-//       height: 180px;
-//       border-bottom: 4px solid $color-grey;
-//   }
-
-//   & h2 {
-//       padding: 1rem;
-//       margin-top: 1rem;
-//   }    
-
-//   & p {
-//       padding: 1rem;
-//   }
-
-// }
-
-// @media (max-width:1090px)  {
-//   .evolutioncard {
-//     margin: 0 auto;
-//     width: 90%;
-//     max-width: 100rem;
-//     margin-top: 10rem;
-//     padding: 1rem;
-
-//     & p {
-//       padding: 1rem;
-//       overflow: hidden;
-//       white-space: nowrap;
-//       text-overflow: ellipsis;
-//   }
-
-// }
-
-// }
-
-// @media (max-width:650px)  {
-//   .evolutioncard {
-//     width: 90%;
-//     max-width: 100rem;
-//     margin-top: 10rem;
-//     padding: 1rem;
-
-//     & p {
-//       padding: 1rem;
-//       overflow: hidden;
-//       white-space: nowrap;
-//       text-overflow: ellipsis;
-//   }
-
-// }
-// }
-
-
 .evolutioncard {
   margin: 0 auto;
-  margin-top: 10rem;
+  margin-top: 0rem;
   width: 90rem;
   height: 100%;
   background: $color-white;
-  border-radius: 1rem;
+  border-radius: 0 0 10px 10px;
   box-shadow: 6px 6px 12px #425DA6 .8,
   -6px -6px 12px #425DA6;
   justify-content: space-between;
 
-  
+  & button {
+    border: none;
+    background: none;
+  }
 
   & h2 {
       padding: 1rem;
@@ -102,7 +37,7 @@
   }
 
   & .pokemonevolution__img {
-      height: 10rem;
+      height: 12rem;
       border-bottom: 4px solid $color-grey;
   }
 
@@ -113,7 +48,6 @@
     margin: 0 auto;
     width: 90%;
     max-width: 100rem;
-    margin-top: 10rem;
     padding: 1rem;
 
     & .evolutioncard__item {
@@ -133,7 +67,6 @@
   .evolutioncard {
     width: 90%;
     max-width: 100rem;
-    margin-top: 10rem;
     padding: 1rem;
 
     & .evolutioncard__item {

@@ -93,7 +93,6 @@ export const usePokemonStore = defineStore({
     evolutionUrl: null,
     evolutionChain: null,
     speciesNames: null,
-    pokemonName: '',
   }),
   getters: {
 

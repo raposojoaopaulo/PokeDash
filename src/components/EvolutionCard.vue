@@ -5,6 +5,7 @@ const urlSprite = null;
   export default {    
     props: {
       evolutionChain: Object,
+      searchPokemon: Function
     },
   computed: {
     formattedsprite() {
@@ -24,24 +25,16 @@ const urlSprite = null;
   };  
 </script>
 
-<!-- <template>
-  <div class="evolutioncard">
-    <h2 v-if="evolutionChain">Evoluitons</h2>
-      <p v-for="{ name, id } in evolutionChain">
-        <h3>{{ name }}</h3>
-        <div class="pokemoncard__img">
-          <img :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`" :alt="name" />
-        </div>
-      </p>
-  </div>
-</template> -->
-
 <template>
   <div class="evolutioncard">
     <h2 v-if="evolutionChain" class="evolutioncard__title">Evolutions</h2>
       <div v-for="{ name, id } in evolutionChain" class="evolutioncard__item">
         <div class="pokemonevolution__img">
-          <img :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`" :alt="name" />
+
+          <button @click="searchPokemon(name)">
+            <img :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`" :alt="name" />
+          </button>
+
         </div>
         <h3>{{ name }}</h3>
       </div>
@@ -51,3 +44,4 @@ const urlSprite = null;
 
 <style scoped>
 </style>
+

@@ -37,6 +37,6 @@ const search = async () => {
   </div>
   <div v-if="currentPokemon">
     <PokemonCard :pokemon="currentPokemon" :pokemonColor="currentPokemonColor"/>
-    <EvolutionCard :evolutionChain="speciesNames"/>
+    <EvolutionCard :evolutionChain="speciesNames" :searchPokemon="searchPokemon"/>
   </div>
 </template>
