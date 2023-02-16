@@ -1,30 +1,109 @@
+// .evolutioncard {
+//   margin: 0 auto;
+//   margin-top: 10rem;
+//   width: 90rem;
+//   height: 20rem;
+//   background: $color-white;
+//   border-radius: 1rem;
+//   box-shadow: 6px 6px 12px #425DA6 .8,
+//   -6px -6px 12px #425DA6;
+
+//   &:hover {
+//       transform: scale(1.1);
+//       transition: 0.3s ease-in-out;
+//   }
+
+//   & img {
+//       height: 180px;
+//       border-bottom: 4px solid $color-grey;
+//   }
+
+//   & h2 {
+//       padding: 1rem;
+//       margin-top: 1rem;
+//   }    
+
+//   & p {
+//       padding: 1rem;
+//   }
+
+// }
+
+// @media (max-width:1090px)  {
+//   .evolutioncard {
+//     margin: 0 auto;
+//     width: 90%;
+//     max-width: 100rem;
+//     margin-top: 10rem;
+//     padding: 1rem;
+
+//     & p {
+//       padding: 1rem;
+//       overflow: hidden;
+//       white-space: nowrap;
+//       text-overflow: ellipsis;
+//   }
+
+// }
+
+// }
+
+// @media (max-width:650px)  {
+//   .evolutioncard {
+//     width: 90%;
+//     max-width: 100rem;
+//     margin-top: 10rem;
+//     padding: 1rem;
+
+//     & p {
+//       padding: 1rem;
+//       overflow: hidden;
+//       white-space: nowrap;
+//       text-overflow: ellipsis;
+//   }
+
+// }
+// }
+
+
 .evolutioncard {
   margin: 0 auto;
   margin-top: 10rem;
   width: 90rem;
-  height: 20rem;
+  height: 100%;
   background: $color-white;
   border-radius: 1rem;
   box-shadow: 6px 6px 12px #425DA6 .8,
   -6px -6px 12px #425DA6;
+  justify-content: space-between;
 
-  &:hover {
-      transform: scale(1.1);
-      transition: 0.3s ease-in-out;
-  }
-
-  & img {
-      height: 180px;
-      border-bottom: 4px solid $color-grey;
-  }
+  
 
   & h2 {
       padding: 1rem;
-      margin-top: 1rem;
+      margin-bottom: 1rem;
   }    
 
-  & p {
-      padding: 1rem;
+  & .evolutioncard__item {
+      display: inline-block;
+      padding-right: 5rem;
+      padding-left: 5rem;
+      vertical-align: top;
+
+      &:hover {
+        transform: scale(1.1);
+        transition: 0.3s ease-in-out;
+    }
+  }
+
+  & .evolutioncard__item h3 {
+      margin: 0;
+      padding-bottom: 1rem;
+  }
+
+  & .pokemonevolution__img {
+      height: 10rem;
+      border-bottom: 4px solid $color-grey;
   }
 
 }
@@ -37,11 +116,13 @@
     margin-top: 10rem;
     padding: 1rem;
 
-    & p {
+    & .evolutioncard__item {
       padding: 1rem;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
+      display: block;
+      margin-right: 0;
   }
 
 }
@@ -55,11 +136,13 @@
     margin-top: 10rem;
     padding: 1rem;
 
-    & p {
+    & .evolutioncard__item {
       padding: 1rem;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
+      display: block;
+      margin-right: 0;
   }
 
 }

@@ -4,7 +4,7 @@ import { storeToRefs } from 'pinia';
 import PokemonCard from '../components/PokemonCard.vue'
 import EvolutionCard from '../components/EvolutionCard.vue'
 
-const { currentPokemon, loading, error, evolutionChain, speciesNames } = storeToRefs(usePokemonStore());
+const { currentPokemon, loading, error, evolutionChain, speciesNames, currentPokemonColor } = storeToRefs(usePokemonStore());
 const { searchPokemon, getEvolution,  } = usePokemonStore();
 
 let pokemonName = '';
@@ -36,8 +36,7 @@ const search = async () => {
     error
   </div>
   <div v-if="currentPokemon">
-    <!-- <PokemonCard :pokemonName="currentPokemon.name" :spriteAddress="currentPokemon.sprites.front_default" /> -->
-    <PokemonCard :pokemon="currentPokemon"/>
+    <PokemonCard :pokemon="currentPokemon" :pokemonColor="currentPokemonColor"/>
     <EvolutionCard :evolutionChain="speciesNames"/>
   </div>
 </template>
