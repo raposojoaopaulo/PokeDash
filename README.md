@@ -1,5 +1,19 @@
 # PokeDash
 
+## PokeDash é uma aplicação de dashboard que apresenta informações sobre pokémons, como seus tipos, habilidades, estatísticas e evoluções. A aplicação utiliza a PokeAPI para obter dados sobre os pokémons.
+
+#
+
+## Tecnologias utilizadas
+* Vue.js
+* Vite
+* Vue Router
+* Sass
+* Axios
+* Pinia
+
+#
+
 This template should help get you started developing with Vue 3 in Vite.
 
 ## Recommended IDE Setup
