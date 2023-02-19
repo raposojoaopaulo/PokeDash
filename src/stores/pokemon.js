@@ -5,10 +5,13 @@ export const usePokemonStore = defineStore({
   id: 'pokemon',
   state: () => ({
     currentPokemon: null,
+    currentPokemonColor: null,
     speciesUrl: null,
     loading: false,
     error: null,
+    evolutionUrl: null,
     evolutionChain: null,
+    speciesNames: null,
   }),
   getters: {
 
@@ -21,51 +24,48 @@ export const usePokemonStore = defineStore({
         this.currentPokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
         .then((response) => response.json())
         .then((json) => {
-          console.log(json)
           this.speciesUrl = json?.species?.url;
-          console.log(`aqui tem url ${this.speciesUrl}`)
           return json;
         })
+        this.evolutionUrl = await fetch(this.speciesUrl)
+        .then((response) => response.json())
+        .then((data) => {
+          const evolutionChainUrl = data.evolution_chain.url
+          this.currentPokemonColor = data.color.name
+          return evolutionChainUrl;
+        })
+        this.evolutionChain = await fetch(this.evolutionUrl)
+        .then((response) => response.json())
+        .then((data) => {          
+          return data;
+        })
+        this.speciesNames = this.getSpeciesNames(this.evolutionChain.chain);
       } catch(error) {
         this.currentPokemon = null;
         this.error = error;
       } finally {
         this.loading = false;
       }
-    },
+    },  
 
-
-    async getEvolution() {
-      console.log("entrei aqui")
-      try {
-        this.error = null;
-        console.log("entrei try?", this.currentPokemon.species.url)
-        const speciesResponse = await fetch(this.currentPokemon.species.url)
-        console.log("especie", speciesResponse.url)
-        const resp = await fetch(speciesResponse.url)
-        .then((response) => response.json())
-              .then((data) => { 
-                const evolutionChainUrl = data.evolution_chain.url
-                console.log("url?", evolutionChainUrl)
-
-                const evolutionResponse = fetch(evolutionChainUrl)
-                .then((response) => response.json())
-                .then((data) => {
-                  this.evolutionChain = data
-                  console.log("evo?", this.evolutionChain)
-                  return data;
-                }
-                )
-                return evolutionResponse;
-
-              })    
-
-        return speciesResponse;
-
-      } catch (error) {
-        return error;
+    getPokemonId(url) {
+      const matches = url.match(/\/pokemon-species\/(\d+)/);
+      if (matches && matches.length === 2) {
+        return parseInt(matches[1], 10);
       }
+      return null;
     },
+
+    getSpeciesNames(chain) {
+      let species = [];
+      species = [{ name: chain.species.name, id: this.getPokemonId(chain.species.url) }];      
+      for (let i = 0; i < chain.evolves_to.length; i++) {
+        const evolvesTo = chain.evolves_to[i];
+        species = species.concat(this.getSpeciesNames(evolvesTo));
+      }
+      return species;
+    }
+    
   },
 
 });
