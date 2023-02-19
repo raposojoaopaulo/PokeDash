@@ -1,5 +1,5 @@
 <template>
-  <h1>Pokemon name {{ $route.params.id }}</h1>
+  <h1>Pokemon name</h1>
 </template>
 
 <style>

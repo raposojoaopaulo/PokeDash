@@ -12,7 +12,6 @@
 
   & img {
     height: 25rem;
-    // border-right: 4px solid $color-grey;
     margin: 1rem;
 
     &:hover {
@@ -101,7 +100,7 @@
   }
 }
 
-@media (max-width:1090px)  {
+@media (max-width:1070px)  {
   .pokemoncard {
     margin: 0 auto;
     width: 90%;
@@ -128,7 +127,7 @@
     padding: 1rem;
 
     & img {
-      width: 90%;
+      width: 70%;
       margin-right: 0;
     }
 
