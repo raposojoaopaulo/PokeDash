@@ -5,6 +5,7 @@ import NavBar from '../components/NavBar.vue'
 
 <template>
   <main class="home">
+    <NavBar />
     <div class="home__logo">
       <img src="https://i.imgur.com/QG5gElr.png" alt="pokedash" />
     </div>

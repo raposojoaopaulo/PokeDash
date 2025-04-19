@@ -1,12 +1,16 @@
 .home {
-    margin-top: 9rem;
+    margin-top: 3rem;
     padding: 5rem;
     border-radius: 3px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
     &__logo img {
-        max-width: 50%;
-        margin-bottom: 9rem;
+        width: 100%;
+        max-width: 60%;
+        margin-bottom: 0rem;
     }
 }
 
@@ -15,7 +19,8 @@
         padding: 1rem;
 
         &__logo img {
-            margin-bottom: 5rem;
+            max-width: 80%;
+            margin-bottom: 0rem;
         }
     } 
 }
