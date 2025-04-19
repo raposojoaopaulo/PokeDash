@@ -57,10 +57,14 @@
       text-overflow: ellipsis;
       display: block;
       margin-right: 0;
+    }
+
+    & .pokemonevolution__img {
+      border: 2px solid $color-grey;
+      border-radius: 8px;
   }
 
-}
-
+  }
 }
 
 @media (max-width:650px)  {
