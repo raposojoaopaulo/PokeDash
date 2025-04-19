@@ -11,9 +11,6 @@
     <div class="navbar__link">
       <ul>
         <li>
-          <a href="https://www.linkedin.com/in/jo%C3%A3o-paulo-raposo-0b1b3b1b9/">LinkedIn</a>
-        </li>
-        <li>
           <a href="https://github.com/raposojoaopaulo/PokeDash">Pokedash Code</a>
         </li>
         <li>

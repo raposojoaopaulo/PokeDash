@@ -51,11 +51,19 @@
 
   @media (max-width: 768px) {
     &__link {
-      display: none;
+      ul {
+        li {
+          a {
+            border: 1px solid #5f7ac4;
+            border-radius: 5px;
+          }
+        }
+      }
     }
 
     &__logo {
       margin-left: 1rem;
+      display: none;
 
       img {
         height: 3rem;
